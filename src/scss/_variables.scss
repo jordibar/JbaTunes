@@ -1,0 +1,28 @@
+// Font families
+$main-font-family: 'Bellefair', serif;
+$title-font-family: 'Source Sans Pro', sans-serif;
+$body-font-family: $main-font-family;
+
+// Font sizes
+$font-size-base: 15px;
+$font-size-small: $font-size-base - 5px;
+$font-size-large: $font-size-base + 5px;
+
+$font-size-h1: $font-size-base + 15px;
+$font-size-h2: $font-size-base + 12px;
+$font-size-h3: $font-size-base + 9px;
+$font-size-h4: $font-size-base + 6px;
+$font-size-h5: $font-size-base + 3px;
+$font-size-h6: $font-size-base;
+
+// Base colors
+$color-the: #CAB935;
+$color-the-light: #D2C777;
+$color-all-of-you: #4C1B1E;
+$color-sky-high: #7CA5A7;
+$color-all-ofyou-light: #C6A3A7;
+$color-white-broken: #ffd;
+
+// Main components colors
+$main-text-color: $color-all-of-you;
+$links-color: $color-all-ofyou-light;

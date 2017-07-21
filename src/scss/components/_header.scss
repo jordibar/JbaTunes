@@ -1,0 +1,13 @@
+.web-header {
+    background: $color-the;
+    padding: 15px;
+    color: $color-all-of-you;
+    text-align: center;
+
+    .web-title {
+        font-weight: bold;
+        text-transform:uppercase;
+        font-size: $font-size-large;
+        color: $color-white-broken;
+    }
+}

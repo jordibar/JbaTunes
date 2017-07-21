@@ -1,14 +1,9 @@
-$background-color: gold;
-$background-color2: coral;
-$background-color3: lightblue;
+// Reset css
+@import "reset";
 
-body {
-    background-color: $background-color;
-}
-p {
-    color: white;
-}
+// Google fonts
+@import url('https://fonts.googleapis.com/css?family=Bellefair|Source+Sans+Pro');
 
-a {
-    color:white;
-}
+@import "variables";
+@import "html-tags";
+@import "components/header";
