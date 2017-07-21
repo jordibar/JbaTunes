@@ -1,8 +1,16 @@
 .web-header {
-    background: $color-the;
+    //Utilizamos una de las funciones de SASS para transparencias
+    background: fade-out($color-the, 0.15);
     padding: 15px;
     color: $color-all-of-you;
     text-align: center;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    transition: background 1s linear;
+    &:hover {
+        background: $color-the;
+    }
 
     .web-title {
         font-weight: bold;

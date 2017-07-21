@@ -1,0 +1,23 @@
+.songs-list {
+    margin-top: 55px;
+    .song {
+        background: $color-sky-high;
+        padding: 15px;
+        margin: 10px 5px;
+        width: calc(50% - 10px);
+        max-height: 250px;
+        height: 250px;
+        overflow: hidden;
+        float:left;
+        .cover {
+            width: 100%;
+        }
+        .artist {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .title {
+            margin-top: 5px;
+        }
+    }
+}
