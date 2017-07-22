@@ -5,8 +5,10 @@
 @import url('https://fonts.googleapis.com/css?family=Bellefair|Source+Sans+Pro');
 
 @import "variables";
+@import "responsive-utils";
 @import "html-tags";
 
 // Components
 @import "components/header";
+@import "components/container";
 @import "components/songs-list";

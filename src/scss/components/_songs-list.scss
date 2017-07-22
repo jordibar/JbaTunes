@@ -9,6 +9,20 @@
         height: 250px;
         overflow: hidden;
         float:left;
+
+        @include if-mobile-landscape {
+            //Cuando utilizamos el landscape en móvil tenemos 4 canciones por línea
+            //restamos 10 ya que le estamos dando 5px de margen por lado
+            //Importante los espacios entre division, resta...!!!
+            width: calc((100% / 4) - 10px);
+        }
+
+        @include if-desktop {
+            //Que muestre 5 por pantalla
+            width: calc((100% / 5) - 10px);
+        }
+
+
         .cover {
             width: 100%;
         }
@@ -19,5 +33,7 @@
         .title {
             margin-top: 5px;
         }
+
+
     }
 }
