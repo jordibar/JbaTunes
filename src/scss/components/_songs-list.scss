@@ -1,5 +1,31 @@
 .songs-list {
     margin-top: 55px;
+
+    .ui-state {
+        display: none;
+    }
+    &.empty {
+        .ui-state.empty {
+            display: block;
+        }
+    }
+    &.loading {
+        .ui-state.loading {
+            display: block;
+        }
+    }
+    &.error {
+        .ui-state.error {
+            display: block;
+        }
+    }
+    &.ideal {
+        .ui-state.ideal {
+            display: block;
+        }
+    }
+    
+
     .song {
         background: $color-sky-high;
         padding: 15px;
