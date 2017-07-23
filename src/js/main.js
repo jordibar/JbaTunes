@@ -1,3 +1,2 @@
-const name = "Jordi Barrero";
+const $ = require("jquery");
 
-console.log(`Hello ${name}`);

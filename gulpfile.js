@@ -6,6 +6,7 @@ var gulpImport = require("gulp-html-import");
 var tap = require("gulp-tap");
 var browserify = require("browserify");
 var buffer = require("gulp-buffer");
+var sourcemaps = require("gulp-sourcemaps");
 
 // Definimos la tarea por defecto
 //decimos donde tiene que buscar archivos sass, carpeta y subcarpetas
@@ -30,9 +31,11 @@ gulp.task("default", ["html", "sass", "js"], function() {
 //Definimos la tarea compliar sass
 gulp.task("sass", function(){    
     gulp.src("./src/scss/style.scss") //Indicamos el archivo fuente
+        .pipe(sourcemaps.init()) // comienza a capturar los sourcemaps
         .pipe(sass().on("error", function(error){
             return notify().write(error);//Si ocurre un error mostramos una notificación
         })) //y le hacemos un pipe para pasarlo a la función que indicamos, también hacemos control de errores
+        .pipe(sourcemaps.write("./")) //guarda el sourcemap en la misma carpeta que el CSS
         .pipe(gulp.dest("dist/")) //guardamos el resultado en la carpeta dist
         .pipe(browserSync.stream()); //recarga el CSS del navegador
 });
@@ -55,7 +58,7 @@ gulp.task("js", function() {
     gulp.src('src/js/main.js')
         .pipe(tap(function(file) { // tap nos permite ejecutar una función por cada fichero selecionado en gulp.src
             //reemplazamos el contenido del fichero por lo que nos devuelve browserify pasándole el fichero
-            file.contents = browserify(file.path)  //creamos una instancia de browserify en base al archivo
+            file.contents = browserify(file.path, {debug: true})  //creamos una instancia de browserify en base al archivo
                             .transform("babelify", {presets: ["es2015"]}) //traduce nuestro código de ES6 a ES5
                             .bundle() //compilamos el archivo
                             .on("error", function(error){ //En caso de error mostramos una notificación
@@ -63,6 +66,8 @@ gulp.task("js", function() {
                             });
         }))
         .pipe(buffer())  // convertimos a buffer para que funcione el siguiente pipe
+        .pipe(sourcemaps.init({loadMaps: true})) // Captura los sourcemaps del archivo fuente
+        .pipe(sourcemaps.write('./')) // guarda los sourcemaps en el mismo directorio que el archivo fuente
         .pipe(gulp.dest("dist/")) // lo guardamos en la carpeta dist
         .pipe(browserSync.stream()); // recargamos el navegador
 });
