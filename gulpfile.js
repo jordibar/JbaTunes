@@ -7,6 +7,11 @@ var tap = require("gulp-tap");
 var browserify = require("browserify");
 var buffer = require("gulp-buffer");
 var sourcemaps = require("gulp-sourcemaps");
+var htmlmin = require("gulp-htmlmin");
+var uglify = require("gulp-uglify");
+var postcss = require("gulp-postcss");
+var autoprefixer = require("autoprefixer");
+var cssnano = require("cssnano");
 
 // Definimos la tarea por defecto
 //decimos donde tiene que buscar archivos sass, carpeta y subcarpetas
@@ -35,6 +40,10 @@ gulp.task("sass", function(){
         .pipe(sass().on("error", function(error){
             return notify().write(error);//Si ocurre un error mostramos una notificación
         })) //y le hacemos un pipe para pasarlo a la función que indicamos, también hacemos control de errores
+        .pipe(postcss([
+            autoprefixer(), //Transforma el CSS dándole compatibilidad a versiones antiguas
+            cssnano() // minifica el CSS
+        ]))
         .pipe(sourcemaps.write("./")) //guarda el sourcemap en la misma carpeta que el CSS
         .pipe(gulp.dest("dist/")) //guardamos el resultado en la carpeta dist
         .pipe(browserSync.stream()); //recarga el CSS del navegador
@@ -46,6 +55,7 @@ gulp.task("sass", function(){
 gulp.task("html", function() {
     gulp.src("src/*.html") //Coge todos los html de la carpeta src
         .pipe(gulpImport("src/components/")) //carpeta donde estaran los trozos de html que va a poder importar
+        .pipe(htmlmin({collapseWhitespace: true})) // minifica el HTML
         .pipe(gulp.dest("dist/")) //carpeta donde deja las copias
         .pipe(browserSync.stream()) // Recargamos el navegador
 });
@@ -67,6 +77,7 @@ gulp.task("js", function() {
         }))
         .pipe(buffer())  // convertimos a buffer para que funcione el siguiente pipe
         .pipe(sourcemaps.init({loadMaps: true})) // Captura los sourcemaps del archivo fuente
+        .pipe(uglify()) //Minificamos el JavaScript
         .pipe(sourcemaps.write('./')) // guarda los sourcemaps en el mismo directorio que el archivo fuente
         .pipe(gulp.dest("dist/")) // lo guardamos en la carpeta dist
         .pipe(browserSync.stream()); // recargamos el navegador
