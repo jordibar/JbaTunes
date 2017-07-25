@@ -1,4 +1,4 @@
-//HAce jQuery accesible públicamente
+//Hace jQuery accesible públicamente
 window.$ = window.jQuery = require("jquery");  // Muy importante para utilizar jQuery con otros frameworks como Bootstrap
 
 import SongsService from "./SongsService";
@@ -19,7 +19,7 @@ $.ajax({
             //Componemos el HTML con todas las canciones
             let html = "";
             for (let song of songs) {
-                //Template strings de ES5
+                //Template strings de ES6
                 //Componemos el html con todas las canciones
                 html += `<article class="song">
                             <img src="${song.cover_url}" alt="${song.artist} - ${song.title}" class="cover">
