@@ -5,6 +5,9 @@ import SongsService from "./SongsService";
 
 const songsService = new SongsService();
 
+
+
+
 // Cargar la lista de canciones con AJAX
 $.ajax({
     url: "/songs/",
@@ -44,4 +47,5 @@ $.ajax({
 });
 
 console.log ("Después de AJAX");
+
 
