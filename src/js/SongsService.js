@@ -1,11 +1,17 @@
+//No es necesario cargar jQuery ya que está importado en main.js
+//es simplemente para que sea más legible
 const $ = require("jquery");
 
 // Servicio para extraer el acceso del API REST
-export default class SongService {
+export default class SongsService {
 
     constructor() {
+        console.log("Songs Service");
     }
 
+
+
+    //Métodos
     //Obtener un listado de canciones
     list(successCallback, errorCallback) {
         $.ajax({
@@ -31,7 +37,7 @@ export default class SongService {
     }
 
     //Actulizar una canción
-    update(songId) {
+    update(song) {
 
     }
 
