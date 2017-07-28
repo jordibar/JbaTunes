@@ -1,5 +1,27 @@
 .song-form {
 
+    .ui-state {
+        &.error {
+            text-align: center;
+            background-color: $color-all-ofyou-light;
+            padding: 10px;
+            border-radius: 5px;
+            color: $color-all-of-you;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        &.loading {
+            text-align: center;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+    }
+
+    &.error .ui-state.error { display: block; }
+    &.loading .ui-state.loading { display: block; }
+
     @include if-tablet-landscape {
         .form-control-group {
             display: inline-block;

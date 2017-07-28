@@ -4,6 +4,7 @@ window.$ = window.jQuery = require("jquery");  // Muy importante para utilizar j
 import SongsService from "./SongsService";
 import UIManager from "./UIManager";
 import SongsListManager from "./SongsListManager.js"
+import SongFormManager from "./SongFormManager"
 
 //Instanciamos SongService
 const songsService = new SongsService("/songs/");
@@ -11,6 +12,9 @@ const songListUIManager = new UIManager(".songs-list");
 
 const songsListManager = new SongsListManager(songsService, songListUIManager); // Inyección de dependencias
 songsListManager.init(); //inicializamos SongsListManager que es donde está la carga de canciones
+
+const songFormManager = new SongFormManager(".song-form", songsService);
+songFormManager.init();
 
 
 

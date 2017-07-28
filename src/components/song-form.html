@@ -1,12 +1,34 @@
 <form novalidate class="song-form">
-    <label for="artist">Artist</label>
-    <input type="text" id="artist" name="artist" placeholder="Artist" required>
 
-    <label for="title">Title</label>
-    <input type="text" id="title" name="title" placeholder="Artist" required>
+    <div class="ui-state error">
+        Se ha producido un error
+    </div>
 
-    <label for="cover_url">cover URL</label>
-    <input type="text" id="cover_url" name="cover_url" placeholder="http://...">
+    <div class="ui-state loading">
+        Guardando canción...
+    </div>
 
-    <button>Save song</button>
+    <div class="ui-state ideal">
+        <div class="form-control-group">
+            <label for="artist">Artist</label>
+            <input type="text" id="artist" name="artist" placeholder="Artist" required>
+        </div>
+        
+
+        <div class="form-control-group">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" placeholder="Title" required>
+        </div>
+        
+
+        <div class="form-control-group">
+            <label for="cover_url">cover URL</label>
+            <input type="url" id="cover_url" name="cover_url" placeholder="http://...">
+        </div>
+        
+
+        <div class="form-control-group">
+            <button>Save song</button>
+        </div>
+    </div>    
 </form>

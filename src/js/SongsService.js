@@ -53,7 +53,7 @@ export default class SongsService {
     //Actulizar una canción
     update(song, successCallback, errorCallback) {
         $.ajax({
-            url: `{this.url}${song.id}`,
+            url: `${this.url}${song.id}`,
             method: "put",
             data: song,
             success: successCallback,
@@ -64,7 +64,7 @@ export default class SongsService {
     //Borrar una canción, ejemplo delete(3, response => {}, error => {})
     delete(songId, successCallback, errorCallback) {
         $.ajax({
-            url: `{this.url}${songId}`,
+            url: `${this.url}${songId}`,
             method: 'delete',
             success:successCallback,
             error: errorCallback
