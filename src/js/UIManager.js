@@ -52,7 +52,6 @@ export default class UIManager {
     }
 
     setIdealHtml(html) {
-        console.log(html);
         this.element.find(".ui-state.ideal").html(html);
     }
 }
