@@ -1,14 +1,20 @@
 
+
 export default class SongsListManager {
     
-    constructor(songService, uiManager) {
+    constructor(songService, uiManager, pubSub) {
         this.songsService = songService;
         this.uiManager = uiManager;
+        this.pubSub = pubSub;
     }
     
     init() {
         //Tenemos que cargar las canciones
         this.loadSongs();
+
+        this.pubSub.subscribe("new-song", (topic, song) => {
+            this.loadSongs();
+        });
 
     }
 

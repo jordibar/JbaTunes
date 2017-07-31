@@ -3,8 +3,7 @@
 const $ = require("jquery");
 
 import UIManager from './UIManager';
-//importamos PubSub
-import PubSub from 'pubsub-js';
+
 
 // SongsService, para hacer petición AJAX para guardar la canción en el backend
 // UIManager para gestionar los estados de la interfaz
@@ -13,11 +12,12 @@ import PubSub from 'pubsub-js';
 
 export default class SongFormManager extends UIManager{ //Hereda de UIManager
 
-    constructor(elementSelector, songsService) {
+    constructor(elementSelector, songsService, pubSub) {
         
         super(elementSelector); //llamada al constructor de la clase UIManager
 
         this.songsService = songsService; 
+        this.pubSub = pubSub;
     }
 
     

@@ -53,6 +53,48 @@
       "title": "mas gatos title",
       "cover_url": "http://cdn.tn.com.ar/sites/default/files/styles/1366x765/public/2015/08/08/gatito.jpg",
       "id": 9
+    },
+    {
+      "artist": "pubsub",
+      "title": "pubsub title",
+      "cover_url": "data:image/png;base64,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",
+      "id": 10
+    },
+    {
+      "artist": "pubsub 2",
+      "title": "pubsub 2 title",
+      "cover_url": "https://www.isode.com/img/pubsub1.png",
+      "id": 11
+    },
+    {
+      "artist": "pubsub de desde songsListManager",
+      "title": "titulo",
+      "cover_url": "https://cloud.google.com/nodejs/images/nodejs-pubsub.png",
+      "id": 12
+    },
+    {
+      "artist": "otro tema más",
+      "title": "otro tema title",
+      "cover_url": "https://www.isode.com/img/pubsub1.png",
+      "id": 13
+    },
+    {
+      "artist": "terminado",
+      "title": "terminado title",
+      "cover_url": "https://www.pubnub.com/wp-content/uploads/2014/11/Pub-Sub-Messaging-Realtime.png",
+      "id": 14
+    },
+    {
+      "artist": "asdfadsf",
+      "title": "asdfasdfadf",
+      "cover_url": "https://www.pubnub.com/wp-content/uploads/2015/03/pubsub-broadcast-design-pattern1.png",
+      "id": 15
+    },
+    {
+      "artist": "gggfffgg",
+      "title": "gfgfgfgfgf",
+      "cover_url": "http://xping.pubsub.com/images/pubsub.png?1220871703",
+      "id": 16
     }
   ]
 }

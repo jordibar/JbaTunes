@@ -5,21 +5,19 @@ import SongsService from "./SongsService";
 import UIManager from "./UIManager";
 import SongsListManager from "./SongsListManager.js";
 import SongFormManager from "./SongFormManager";
-import PubSub from "pubsub.js";
+import PubSub from "pubsub-js";
 
 //Instanciamos SongService
 const songsService = new SongsService("/songs/");
 const songListUIManager = new UIManager(".songs-list");
 
-const songsListManager = new SongsListManager(songsService, songListUIManager); // Inyección de dependencias
+const songsListManager = new SongsListManager(songsService, songListUIManager, PubSub); // Inyección de dependencias
 songsListManager.init(); //inicializamos SongsListManager que es donde está la carga de canciones
 
-const songFormManager = new SongFormManager(".song-form", songsService);
+const songFormManager = new SongFormManager(".song-form", songsService, PubSub);
 songFormManager.init();
 
-PubSub.subscribe("new-song", function(song) {
-    console.log("Sea ha creado una nueva canción", song);
-});
+
 
 
 
