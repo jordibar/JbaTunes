@@ -1,7 +1,10 @@
-//importamos jQuery
+//importamos jQuery, hacemos un require porque jquery
+//todavía no acepta ES6, si no lo haríamos con import
 const $ = require("jquery");
 
 import UIManager from './UIManager';
+//importamos PubSub
+import PubSub from 'pubsub-js';
 
 // SongsService, para hacer petición AJAX para guardar la canción en el backend
 // UIManager para gestionar los estados de la interfaz
@@ -76,7 +79,8 @@ export default class SongFormManager extends UIManager{ //Hereda de UIManager
 
         //enviamos los datos utilizando SongsService
         this.songsService.save(song, success => {
-            //TODO Recargar el listado de canciones
+            //Recargamos el listado de canciones con PubSub
+            PubSub.publish("new-song", song); //Publicamos el evento que informa de la creación de una canción
 
             //limpiamos el formulario
             this.resetForm();
