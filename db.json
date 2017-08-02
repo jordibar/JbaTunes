@@ -37,12 +37,6 @@
       "id": 6
     },
     {
-      "artist": "King",
-      "title": "wa",
-      "cover_url": "https://kingsofleon-assets.s3.amazonaws.com/news/images/KOL-WALLS-5x5Cover.png",
-      "id": 7
-    },
-    {
       "artist": "gatito",
       "title": "gatito title",
       "cover_url": "https://static.affinity-petcare.com/advance/cdn/farfuture/-z6W4O6nUSCnrxGuwiUwbishXvKKJ03MnwiWpVJmr6o/drupal-cache:otft8a/sites/default/files/img_gatitos_body.png",
@@ -65,18 +59,6 @@
       "title": "pubsub 2 title",
       "cover_url": "https://www.isode.com/img/pubsub1.png",
       "id": 11
-    },
-    {
-      "artist": "pubsub de desde songsListManager",
-      "title": "titulo",
-      "cover_url": "https://cloud.google.com/nodejs/images/nodejs-pubsub.png",
-      "id": 12
-    },
-    {
-      "artist": "otro tema más",
-      "title": "otro tema title",
-      "cover_url": "https://www.isode.com/img/pubsub1.png",
-      "id": 13
     },
     {
       "artist": "terminado",

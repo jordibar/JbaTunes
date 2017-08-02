@@ -17,8 +17,9 @@ export default class SongsListManager extends UIManager{
         //Manejador de eventos, al hacer clic borramos la cacnión
         this.element.on("click", ".song", function() {
             //Con jQuery accedemos a los atributos data para saber el id
-            let songId = this.dataset("id"); 
-            self.deleteSong();
+            let songId = this.dataset.id; 
+            self.deleteSong(songId);
+            
         });
 
         this.pubSub.subscribe("new-song", (topic, song) => {
@@ -78,7 +79,7 @@ export default class SongsListManager extends UIManager{
         }
 
         //retorna el template string con el renderizado de una canción
-        return `<article class="song">
+        return `<article class="song" data-id="${song.id}">
                         <img src="${song.cover_url}" alt="${song.artist} - ${song.title}" class="cover"${srcset}>   
                         <div class="artist">${song.artist}</div>
                         <div class="title">${song.title}</div>

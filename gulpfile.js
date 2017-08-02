@@ -12,8 +12,8 @@ var uglify = require("gulp-uglify");
 var postcss = require("gulp-postcss");
 var autoprefixer = require("autoprefixer");
 var cssnano = require("cssnano");
-var optimize = require("gulp-imagemin");
-/*var responsive = require("gulp-responsive");*/
+var imagemin = require("gulp-imagemin");
+var responsive = require("gulp-responsive");
 
 // Definimos la tarea por defecto
 //decimos donde tiene que buscar archivos sass, carpeta y subcarpetas
@@ -90,11 +90,11 @@ gulp.task("js", function() {
 
 // Tarea que optimiza y crea las imágenes responsive
 gulp.task("img", function() {
-/*
-Paro esta tarea ya que no me funciona en windows!! También tenemos el require comentado!
+
+// Paro esta tarea ya que no me funciona en windows!! También tenemos el require comentado!
     gulp.src("src/img/*")        
         .pipe(responsive({ // Generamos las versiones responsive
-            '*.png': [
+            '*': [
                 { width: 150, rename: { suffix: "-150px"}},
                 { width: 250, rename: { suffix: "-250px"}},
                 { width: 300, rename: { suffix: "-300px"}}
@@ -103,5 +103,5 @@ Paro esta tarea ya que no me funciona en windows!! También tenemos el require c
         .pipe(imagemin()) // Optimizamos el peso de las imágenes
         .pipe(gulp.dest("dist/img/")) // Carpeta donde se guardan las imágenes
     
-*/
+
 });
