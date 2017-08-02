@@ -12,11 +12,13 @@ var uglify = require("gulp-uglify");
 var postcss = require("gulp-postcss");
 var autoprefixer = require("autoprefixer");
 var cssnano = require("cssnano");
+var optimize = require("gulp-imagemin");
+/*var responsive = require("gulp-responsive");*/
 
 // Definimos la tarea por defecto
 //decimos donde tiene que buscar archivos sass, carpeta y subcarpetas
 //cuando hay cambios ejecuta la tarea 'sass'
-gulp.task("default", ["html", "sass", "js"], function() {
+gulp.task("default", ["img", "html", "sass", "js"], function() {
 
     //Iniciamos el servidor de desarrollo en la carpeta src
     browserSync.init({ proxy: "http://127.0.0.1:3100" });  // antes de instalar el servidor json-server tenía browserSync.init({ server: "dist/"});
@@ -81,4 +83,25 @@ gulp.task("js", function() {
         .pipe(sourcemaps.write('./')) // guarda los sourcemaps en el mismo directorio que el archivo fuente
         .pipe(gulp.dest("dist/")) // lo guardamos en la carpeta dist
         .pipe(browserSync.stream()); // recargamos el navegador
+});
+
+
+
+
+// Tarea que optimiza y crea las imágenes responsive
+gulp.task("img", function() {
+/*
+Paro esta tarea ya que no me funciona en windows!! También tenemos el require comentado!
+    gulp.src("src/img/*")        
+        .pipe(responsive({ // Generamos las versiones responsive
+            '*.png': [
+                { width: 150, rename: { suffix: "-150px"}},
+                { width: 250, rename: { suffix: "-250px"}},
+                { width: 300, rename: { suffix: "-300px"}}
+            ]
+        }))
+        .pipe(imagemin()) // Optimizamos el peso de las imágenes
+        .pipe(gulp.dest("dist/img/")) // Carpeta donde se guardan las imágenes
+    
+*/
 });

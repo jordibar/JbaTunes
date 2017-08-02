@@ -9,9 +9,9 @@ import PubSub from "pubsub-js";
 
 //Instanciamos SongService
 const songsService = new SongsService("/songs/");
-const songListUIManager = new UIManager(".songs-list");
+const songListUIManager = new UIManager();
 
-const songsListManager = new SongsListManager(songsService, songListUIManager, PubSub); // Inyección de dependencias
+const songsListManager = new SongsListManager(".songs-list", songsService, PubSub); // Inyección de dependencias
 songsListManager.init(); //inicializamos SongsListManager que es donde está la carga de canciones
 
 const songFormManager = new SongFormManager(".song-form", songsService, PubSub);

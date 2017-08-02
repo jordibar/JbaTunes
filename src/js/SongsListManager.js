@@ -1,16 +1,25 @@
+import UIManager from './UIManager';
 
-
-export default class SongsListManager {
+export default class SongsListManager extends UIManager{
     
-    constructor(songService, uiManager, pubSub) {
+    constructor(elementSelector, songService, pubSub) {
+        super(elementSelector);
         this.songsService = songService;
-        this.uiManager = uiManager;
         this.pubSub = pubSub;
     }
     
     init() {
         //Tenemos que cargar las canciones
         this.loadSongs();
+
+        let self = this;
+
+        //Manejador de eventos, al hacer clic borramos la cacnión
+        this.element.on("click", ".song", function() {
+            //Con jQuery accedemos a los atributos data para saber el id
+            let songId = this.dataset("id"); 
+            self.deleteSong();
+        });
 
         this.pubSub.subscribe("new-song", (topic, song) => {
             this.loadSongs();
@@ -26,17 +35,17 @@ export default class SongsListManager {
             //Comprovamos si hay canciones
             if(songs.lenght == 0) {
                 //Mostramos el estado vacío
-                this.uiManager.setEmpty();
+                this.setEmpty();
             }else{
                 //Llamamos al método que pinta el html con las canciones
                 this.renderSongs(songs);
 
                 //Quitamos el mensaje de cargando y ponemos la clase ideal
-                this.uiManager.setIdeal();
+                this.setIdeal();
             }
         }, error => {
             //Mostrar el estado de error
-            this.uiManager.setError();
+            this.setError();
             //Hacemos log del error en la consola
             console.log("ERROR", error);
         })
@@ -54,16 +63,35 @@ export default class SongsListManager {
             html += this.renderSong(song);
         }
         //Metemos el HTML en el div que contiene las canciones
-        this.uiManager.setIdealHtml(html);
+        this.setIdealHtml(html);
     }
 
 
     renderSong(song) {
+        let cover_url = song.cover_url;
+        let srcset = "";
+
+        if (cover_url == "") {
+            cover_url = "img/disk-150px.png";
+            srcset = 'srcset= img/disk-150px.png 150w, img/disk-250px.png 250w, img/disk-300px.png 300w';
+
+        }
+
         //retorna el template string con el renderizado de una canción
         return `<article class="song">
-                        <img src="${song.cover_url}" alt="${song.artist} - ${song.title}" class="cover">
+                        <img src="${song.cover_url}" alt="${song.artist} - ${song.title}" class="cover"${srcset}>   
                         <div class="artist">${song.artist}</div>
                         <div class="title">${song.title}</div>
                     </article>`;
+    }
+
+
+    deleteSong(songId) {
+        this.setLoading();
+        this.songsService.delete(songId, success => {
+            this.loadSongs();
+        }), error => {
+            this.setError();
+        }
     }
 }
